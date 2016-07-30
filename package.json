@@ -1,0 +1,19 @@
+{
+  "name": "cloudmusicapi",
+  "version": "1.0.0",
+  "description": "A CloudMusic API Parser With NeteaseMusic V2(new) API",
+  "main": "api.js",
+  "dependencies": {
+    "big-integer": "^1.6.15",
+    "crypto": "^0.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node test"
+  },
+  "keywords": [
+    "cloudmusic"
+  ],
+  "author": "Corps",
+  "license": "MIT"
+}

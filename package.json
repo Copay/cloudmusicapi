@@ -1,6 +1,6 @@
 {
   "name": "cloudmusicapi",
-  "version": "1.0.0",
+  "version": "1.0.10",
   "description": "A CloudMusic API Parser With NeteaseMusic V2(new) API",
   "main": "api.js",
   "dependencies": {
@@ -15,5 +15,9 @@
     "cloudmusic"
   ],
   "author": "Corps",
-  "license": "MIT"
+  "license": "MIT",
+  "repository":{
+    "type":"git",
+    "url":"https://github.com/Copay/cloudmusicapi.git"
+  }
 }

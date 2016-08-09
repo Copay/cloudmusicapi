@@ -3,11 +3,11 @@ const core = require("./core");
 let API = {};
 API.search = (name,callback,settings)=>{
 	if(settings){
-		let limit = settings.limit;
-		let type  = settings.type;
+		var limit = settings.limit;
+		var type  = settings.type;
 	}else{
-		let limit = "5";
-		let type  = "1";
+		var limit = "5";
+		var type  = "1";
 	}
 	if(typeof limit == "number")limit = limit.toString();
 	if(typeof type  == "number")type  = type.toString();
@@ -56,7 +56,7 @@ API.getPlaylist = (id,callback)=>{
 	core.post("http://music.163.com/weapi/v3/playlist/detail?csrf_token=",form,(data)=>callback(data));
 }
 API.getURL = (id,callback,br)=>{
-	if(!br)let br="320000";
+	if(!br)var br="320000";
 	let isArr = false;
 	if(id == 0) throw new Error("喵喵喵???");
 	if(typeof id == "number"){

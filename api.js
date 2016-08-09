@@ -1,4 +1,4 @@
-const core = require("./core");
+const core = require("./lib/core");
 let API = {};
 API.search = (name,callback,{limit="5",type="1"}={})=>{
 	if(typeof limit == "number")limit = limit.toString();

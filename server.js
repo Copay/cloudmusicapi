@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+"use strict";
 let http = require("http");
 let api = require("./api");
 let port;

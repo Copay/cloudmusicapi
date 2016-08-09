@@ -14,6 +14,7 @@
  *  Thanks for your Using!
  *  
 */
+"use strict";
 const crypto = require("crypto");
 const Bigint = require("big-integer");
 const http = require("http");

@@ -1,3 +1,4 @@
+"use strict";
 const core = require("./core");
 let API = {};
 API.search = (name,callback,settings)=>{

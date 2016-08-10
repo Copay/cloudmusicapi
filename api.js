@@ -48,7 +48,6 @@ API.getPlaylist = (id,callback)=>{
 	core.post("http://music.163.com/weapi/v3/playlist/detail?csrf_token=",form,(data)=>callback(data));
 }
 API.getURL = (id,callback,br = "320000")=>{
-	return callback("http://music.163.com/song/media/outer/url?id="+id);
 	if(id == 0) throw new Error("喵喵喵???");
 	if(typeof id == "number"){
 		id = "["+id+"]";

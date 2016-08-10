@@ -1,4 +1,4 @@
-const core = require("./lib/core");
+const core = require("./lib/core.lib");
 let API = {};
 API.search = (name,callback,{limit="5",type="1"}={})=>{
 	if(typeof limit == "number")limit = limit.toString();
@@ -48,13 +48,14 @@ API.getPlaylist = (id,callback)=>{
 	core.post("http://music.163.com/weapi/v3/playlist/detail?csrf_token=",form,(data)=>callback(data));
 }
 API.getURL = (id,callback,br = "320000")=>{
-	let isArr = false;
+	return callback("http://music.163.com/song/media/outer/url?id="+id);
 	if(id == 0) throw new Error("喵喵喵???");
 	if(typeof id == "number"){
-		id = id.toString();
-	}else if(Array.isArray()){
+		id = "["+id+"]";
+	}else if(Array.isArray(id)){
 		id = JSON.stringify(id);
-		isArr = true;
+	}else if(id.substring(0,1)!=="["){
+		id = "["+id+"]";
 	}
 	if(typeof br == "number") br = br.toString();
 	const form = {
@@ -62,7 +63,7 @@ API.getURL = (id,callback,br = "320000")=>{
 		br,
 		csrf_token	:""
 	};
-	core.post("http://music.163.com/weapi/song/enhance/player/url?csrf_token=",form,(data)=>callback(data,isArr));
+	core.post("http://music.163.com/weapi/song/enhance/player/url?csrf_token=",form,(data)=>callback(data));
 }
 API.getLyric = (id,callback)=>{
 	if(id == 0) throw new Error("哞哞哞???");

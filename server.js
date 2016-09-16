@@ -1,14 +1,9 @@
 #!/usr/bin/env node
 
+//import cParseURL from "./lib/cParseURL.js";
 let http = require("http");
 let api = require("./api");
-let port;
-if (!process.argv[2]){
-	port = 8888;
-}else{
-	port = process.argv[2].match(/--port=(\d*)/gi)[0] ? parseInt(process.argv[2].replace(/--port=(\d+)/gi,"$1")) : 8888;
-}
-http.createServer((req,res)=>{
+let server = http.createServer((req,res)=>{
 	const CALLBACK = data=>{
 		data = JSON.stringify(data);
 		if(url.query.callback) data = url.query.callback + "(" + data + ")";
@@ -18,6 +13,10 @@ http.createServer((req,res)=>{
 		"Content-Type":"text/json;charset=utf-8"
 	});
 	let url = require("url").parse(req.url,true);
+		if (url.pathname == '/health') {
+	    res.writeHead(200);
+	    res.end();
+	}
 	url.pathname = decodeURI(url.pathname);
 	if(url.pathname.substring(0,13)=="/search/song/"){
 		api.search(url.pathname.substring(13),CALLBACK,{type:"1"});
@@ -59,4 +58,7 @@ http.createServer((req,res)=>{
 		res.end("汪汪汪???");
 	}
 	//以上是搜索信息的可能(1.0.0)
-}).listen(port).on("error", (j)=>{console.error(j)});
+});
+server.listen(env.NODE_PORT || 3000, env.NODE_IP || 'localhost', function () {
+  console.log(`Application worker ${process.pid} started...`);
+});
